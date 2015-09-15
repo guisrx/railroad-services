@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.selau.thoughtworks.railroad.graph.Edge;
-import com.selau.thoughtworks.railroad.graph.Graph;
-import com.selau.thoughtworks.railroad.graph.Node;
+import com.selau.thoughtworks.railroad.graph.domain.Edge;
+import com.selau.thoughtworks.railroad.graph.domain.Graph;
+import com.selau.thoughtworks.railroad.graph.domain.Node;
 
 public class Railroad implements Graph {
 
@@ -29,7 +29,7 @@ public class Railroad implements Graph {
     }
 
     @Override
-    public int distance(Node source, Node target) {
+    public Integer distance(Node source, Node target) {
         final Edge edge = new RailConnection(source, target);
         return distances.get(edge);
     }

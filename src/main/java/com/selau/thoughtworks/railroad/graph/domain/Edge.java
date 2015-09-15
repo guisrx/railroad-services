@@ -1,4 +1,4 @@
-package com.selau.thoughtworks.railroad.graph;
+package com.selau.thoughtworks.railroad.graph.domain;
 
 public interface Edge {
 

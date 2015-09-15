@@ -4,8 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeSet;
 
+import com.selau.thoughtworks.railroad.graph.domain.EvaluatedNodeWrapper;
+import com.selau.thoughtworks.railroad.graph.domain.Graph;
+import com.selau.thoughtworks.railroad.graph.domain.Node;
+
 /**
- * Dijkstra's algorithm implementation from https://en.wikipedia.org/wiki/Dijkstra's_algorithm
+ *  Dijkstra's algorithm implementation based on https://en.wikipedia.org/wiki/Dijkstra's_algorithm
  *
  *   function DijkstraCalculator(Graph, source):
  *       dist[source] ← 0                                    // Initialization
@@ -72,7 +76,8 @@ public class DijkstraCalculator {
 
                 final EvaluatedNodeWrapper evaluatedNeighborNode = evaluatedNodesMap.get(neighbor);
 
-                if (newNeighborDistance < evaluatedNeighborNode.distance()) {
+                if ((newNeighborDistance < evaluatedNeighborNode.distance())
+                        || (evaluatedNeighborNode.distance() == NO_DISTANCE)) {
 
                     final EvaluatedNodeWrapper newNeighborEvaluation = new EvaluatedNodeWrapper(neighbor, newNeighborDistance);
                     evaluatedNodesMap.put(neighbor, newNeighborEvaluation);

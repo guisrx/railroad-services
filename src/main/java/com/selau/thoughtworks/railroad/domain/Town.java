@@ -1,6 +1,6 @@
 package com.selau.thoughtworks.railroad.domain;
 
-import com.selau.thoughtworks.railroad.graph.Node;
+import com.selau.thoughtworks.railroad.graph.domain.Node;
 
 public class Town implements Node {
 
