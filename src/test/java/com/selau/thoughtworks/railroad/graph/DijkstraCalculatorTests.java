@@ -11,7 +11,7 @@ import com.selau.thoughtworks.railroad.domain.Town;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
 
 /**
- * Tests of the class {@link DijkstraCalculator}.
+ * Unit tests of the class {@link DijkstraCalculator}.
  * @author selau
  *
  */

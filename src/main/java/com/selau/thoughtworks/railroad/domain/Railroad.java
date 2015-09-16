@@ -3,6 +3,7 @@ package com.selau.thoughtworks.railroad.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.selau.thoughtworks.railroad.graph.domain.Edge;
 import com.selau.thoughtworks.railroad.graph.domain.Graph;
@@ -11,9 +12,9 @@ import com.selau.thoughtworks.railroad.graph.domain.Node;
 public class Railroad implements Graph {
 
     private final Map<Edge, Integer> distances;
-    private final Map<Node, List<Node>> adjacents;
+    private final Map<Node, Set<Node>> adjacents;
 
-    public Railroad(final Map<Edge, Integer> distances, final Map<Node, List<Node>> adjacents) {
+    public Railroad(final Map<Edge, Integer> distances, final Map<Node, Set<Node>> adjacents) {
         this.distances = distances;
         this.adjacents = adjacents;
     }
@@ -24,7 +25,7 @@ public class Railroad implements Graph {
     }
 
     @Override
-    public List<Node> neighbors(Node node) {
+    public Set<Node> neighbors(Node node) {
         return adjacents.get(node);
     }
 

@@ -1,15 +1,20 @@
 package com.selau.thoughtworks.railroad.graph;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import com.selau.thoughtworks.railroad.domain.RailConnection;
 import com.selau.thoughtworks.railroad.domain.Railroad;
 import com.selau.thoughtworks.railroad.graph.domain.Edge;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
 
+/**
+ * Provider of a test instance of the {@link Railroad}.
+ * @author selau
+ *
+ */
 public class RailroadInstanceProvider {
 
     public Railroad buildTestRailRoad(
@@ -20,13 +25,13 @@ public class RailroadInstanceProvider {
             final Node nodeE) {
 
         final Map<Edge, Integer> distances = new HashMap<Edge, Integer>();
-        final Map<Node, List<Node>> adjacents = new HashMap<Node, List<Node>>();
+        final Map<Node, Set<Node>> adjacents = new HashMap<Node, Set<Node>>();
 
-        final List<Node> nodeAAdjacents = new ArrayList<Node>();
-        final List<Node> nodeBAdjacents = new ArrayList<Node>();
-        final List<Node> nodeCAdjacents = new ArrayList<Node>();
-        final List<Node> nodeDAdjacents = new ArrayList<Node>();
-        final List<Node> nodeEAdjacents = new ArrayList<Node>();
+        final Set<Node> nodeAAdjacents = new HashSet<Node>();
+        final Set<Node> nodeBAdjacents = new HashSet<Node>();
+        final Set<Node> nodeCAdjacents = new HashSet<Node>();
+        final Set<Node> nodeDAdjacents = new HashSet<Node>();
+        final Set<Node> nodeEAdjacents = new HashSet<Node>();
 
         nodeAAdjacents.add(nodeB);
         nodeAAdjacents.add(nodeD);

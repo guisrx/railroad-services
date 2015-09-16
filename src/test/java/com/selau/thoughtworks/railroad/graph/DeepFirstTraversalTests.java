@@ -9,7 +9,7 @@ import com.selau.thoughtworks.railroad.domain.Town;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
 
 /**
- * Test class of {@link DeepFirstTraversal}.
+ * Unit test class of {@link DeepFirstTraversal}.
  * @author selau
  *
  */
@@ -53,7 +53,7 @@ public class DeepFirstTraversalTests {
     }
 
     @Test
-    public void shouldPathsUntilMaxDistance() {
+    public void shouldCountPathsUntilMaxDistance() {
         // given
         final Node nodeA = new Town("A");
         final Node nodeB = new Town("B");
@@ -66,6 +66,6 @@ public class DeepFirstTraversalTests {
         final DeepFirstTraversal subject = new DeepFirstTraversal();
 
         // when then
-        assertEquals(7, subject.countTotalPathsWithLessThanMaxDistance(railroad, nodeA, nodeC, 30));
+        assertEquals(7, subject.countTotalPathsWithLessThanMaxDistance(railroad, nodeC, nodeC, 30));
     }
 }

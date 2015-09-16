@@ -10,7 +10,7 @@ import com.selau.thoughtworks.railroad.graph.domain.InvalidPath;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
 
 /**
- * Test class of the {@link PathDistanceCalculator}.
+ * Unit test class of the {@link PathDistanceCalculator}.
  * @author selau
  *
  */
