@@ -42,6 +42,29 @@ public class DijkstraCalculatorTests {
     }
 
     @Test
+    public void algorithmShouldNotAlterGraphDefinition() {
+        // given
+        final Node nodeA = new Town("A");
+        final Node nodeB = new Town("B");
+        final Node nodeC = new Town("C");
+        final Node nodeD = new Town("D");
+        final Node nodeE = new Town("E");
+
+        final RailroadInstanceProvider provider = new RailroadInstanceProvider();
+        final Railroad railroad = provider.buildTestRailRoad(nodeA, nodeB, nodeC, nodeD, nodeE);
+        final DijkstraCalculator subject = new DijkstraCalculator();
+
+        // when
+        final Map<Node, Integer> shortestPathsCosts = subject.calculate(railroad, nodeA);
+
+        // then
+        final Railroad newRailroad = provider.buildTestRailRoad(nodeA, nodeB, nodeC, nodeD, nodeE);
+
+        assertEquals(Integer.valueOf(7), shortestPathsCosts.get(nodeE));
+        assertEquals(newRailroad, railroad);
+    }
+
+    @Test
     public void shouldFindShortestRouteCostsWithSourceToSourceNotZero() {
         // given
         final Node nodeA = new Town("A");

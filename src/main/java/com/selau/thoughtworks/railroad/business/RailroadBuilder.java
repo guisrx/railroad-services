@@ -21,6 +21,9 @@ public class RailroadBuilder {
 
     public Railroad build(final Set<RailConnectionDefinition> connectionsDefinitions) {
 
+        if ((connectionsDefinitions == null) || (connectionsDefinitions.isEmpty()))
+            throw new IllegalArgumentException("Connections definitions not provided !");
+
         final Map<Edge, Integer> distances = new HashMap<Edge, Integer>();
         final Map<Node, Set<Node>> adjacents = new HashMap<Node, Set<Node>>();
 
@@ -39,6 +42,7 @@ public class RailroadBuilder {
                 sourceTownAdjacents = new HashSet<Node>();
 
             sourceTownAdjacents.add(destinationTown);
+            adjacents.put(sourceTown, sourceTownAdjacents);
         }
         return new Railroad(distances, adjacents);
     }

@@ -1,5 +1,7 @@
 package com.selau.thoughtworks.railroad.graph;
 
+import java.util.Set;
+
 import com.selau.thoughtworks.railroad.graph.domain.Graph;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
 
@@ -45,7 +47,12 @@ public class DeepFirstTraversal {
         if ((maxSteps == currentStep) && (source != target))
             return 0;
 
-        for (final Node node : graph.neighbors(source))
+        final Set<Node> neighbors = graph.neighbors(source);
+
+        if ((neighbors == null) || (neighbors.isEmpty()))
+            return 0;
+
+        for (final Node node : neighbors)
             countAccumulator += countPaths(graph, node, target, maxSteps, currentStep +1);
 
         return countAccumulator;

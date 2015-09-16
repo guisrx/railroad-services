@@ -6,7 +6,9 @@ import java.util.Map;
 import java.util.Set;
 
 import com.selau.thoughtworks.railroad.domain.RailConnection;
+import com.selau.thoughtworks.railroad.domain.RailConnectionDefinition;
 import com.selau.thoughtworks.railroad.domain.Railroad;
+import com.selau.thoughtworks.railroad.domain.Town;
 import com.selau.thoughtworks.railroad.graph.domain.Edge;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
 
@@ -16,6 +18,32 @@ import com.selau.thoughtworks.railroad.graph.domain.Node;
  *
  */
 public class RailroadInstanceProvider {
+
+    public Set<RailConnectionDefinition> buildRailConnectionDefinitions() {
+        final Set<RailConnectionDefinition> definitions = new HashSet<RailConnectionDefinition>();
+
+        definitions.add(new RailConnectionDefinition('A', 'B', 5));
+        definitions.add(new RailConnectionDefinition('B', 'C', 4));
+        definitions.add(new RailConnectionDefinition('C', 'D', 8));
+        definitions.add(new RailConnectionDefinition('D', 'C', 8));
+        definitions.add(new RailConnectionDefinition('D', 'E', 6));
+        definitions.add(new RailConnectionDefinition('A', 'D', 5));
+        definitions.add(new RailConnectionDefinition('C', 'E', 2));
+        definitions.add(new RailConnectionDefinition('E', 'B', 3));
+        definitions.add(new RailConnectionDefinition('A', 'E', 7));
+
+        return definitions;
+    }
+
+    public Railroad buildTestRailRoad() {
+        final Node nodeA = new Town("A");
+        final Node nodeB = new Town("B");
+        final Node nodeC = new Town("C");
+        final Node nodeD = new Town("D");
+        final Node nodeE = new Town("E");
+
+        return buildTestRailRoad(nodeA, nodeB, nodeC, nodeD, nodeE);
+    }
 
     public Railroad buildTestRailRoad(
             final Node nodeA,
