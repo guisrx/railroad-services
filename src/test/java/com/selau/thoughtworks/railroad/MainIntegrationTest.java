@@ -18,17 +18,30 @@ import org.junit.Test;
  */
 public class MainIntegrationTest {
 
+    private static final String[] inputFiles = {"/input-1.txt", "/input-2.txt"};
+    private static final String[] outputFiles = {"/output-1.txt", "/output-2.txt"};
+
     @Test
     public void shouldProcessRailBIReportCorrectly() throws FileNotFoundException {
+
+        for (int testFilesPair = 0; testFilesPair < inputFiles.length; testFilesPair++)
+            testProcessRailBIReportForGivenInOutFiles(inputFiles[testFilesPair], outputFiles[testFilesPair]);
+    }
+
+    private void testProcessRailBIReportForGivenInOutFiles(
+            final String inputFilePath,
+            final String outputFilePath)
+                    throws FileNotFoundException {
+
         // given
-        final URL inputURL = this.getClass().getResource("/input-1.txt");
+        final URL inputURL = this.getClass().getResource(inputFilePath);
         final Main subject = new Main();
 
         // when
         final List<String> answers = subject.processAnswers(new String[] {inputURL.getFile()});
 
         // then
-        final URL outputURL = this.getClass().getResource("/output-1.txt");
+        final URL outputURL = this.getClass().getResource(outputFilePath);
         final Scanner outputScanner = new Scanner(new FileInputStream(outputURL.getFile()));
 
         for (final String answer : answers) {

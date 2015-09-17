@@ -90,7 +90,11 @@ public class DeepFirstTraversalImpl implements DeepFirstTraversal {
         if ((currentDistance > 0) && (currentDistance < maxDistance) && (source.equals(target)))
             countAccumulator++;
 
-        for (final Node neighbor : graph.neighbors(source)) {
+        final Set<Node> neighbors = graph.neighbors(source);
+        if ((neighbors == null) || (neighbors.isEmpty()))
+            return countAccumulator;
+
+        for (final Node neighbor : neighbors) {
             final int neighborAccumulatedDistance = currentDistance + graph.distance(source, neighbor);
 
             countAccumulator += countPathsUntilMaxDistance(

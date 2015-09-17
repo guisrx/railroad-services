@@ -3,6 +3,7 @@ package com.selau.thoughtworks.railroad.graph.impl;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Set;
 
 import com.selau.thoughtworks.railroad.graph.DijkstraCalculator;
 import com.selau.thoughtworks.railroad.graph.domain.EvaluatedNodeWrapper;
@@ -10,7 +11,8 @@ import com.selau.thoughtworks.railroad.graph.domain.Graph;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
 
 /**
- *  Dijkstra's algorithm implementation based on https://en.wikipedia.org/wiki/Dijkstra's_algorithm
+ *  Dijkstra's algorithm implementation using a priority queue based on
+ *  https://en.wikipedia.org/wiki/Dijkstra's_algorithm
  *
  *   function DijkstraCalculatorImpl(Graph, source):
  *       dist[source] ← 0                                    // Initialization
@@ -36,9 +38,6 @@ import com.selau.thoughtworks.railroad.graph.domain.Node;
  *       return dist[], prev[]
 */
 public class DijkstraCalculatorImpl implements DijkstraCalculator {
-
-    private static Integer INFINITE_DISTANCE = Integer.valueOf(Integer.MAX_VALUE);
-    private static Integer NO_DISTANCE = Integer.valueOf(0);
 
     @Override
     public Map<Node, Integer> calculate(final Graph graph, final Node source) {
@@ -74,7 +73,11 @@ public class DijkstraCalculatorImpl implements DijkstraCalculator {
             if (leastDistanceNode.distance() == INFINITE_DISTANCE)
                 break;
 
-            for (final Node neighbor : graph.neighbors(leastDistanceNode.node())) {
+            final Set<Node> neighbors = graph.neighbors(leastDistanceNode.node());
+            if ((neighbors == null) || (neighbors.isEmpty()))
+                continue;
+
+            for (final Node neighbor : neighbors) {
 
                 final int currentNeighborDistance =  graph.distance(leastDistanceNode.node(), neighbor);
                 final int newNeighborDistance = leastDistanceNode.distance() + currentNeighborDistance;

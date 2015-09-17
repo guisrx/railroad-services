@@ -28,11 +28,15 @@ public class RailroadBuilderImpl implements RailroadBuilder {
 
         final Map<Edge, Integer> distances = new HashMap<Edge, Integer>();
         final Map<Node, Set<Node>> adjacents = new HashMap<Node, Set<Node>>();
+        final Set<Node> nodes = new HashSet<Node>();
 
         for (final RailConnectionDefinition connectionDefinition : connectionsDefinitions) {
 
             final Node sourceTown = new Town(String.valueOf(connectionDefinition.getSourceTown()));
             final Node destinationTown = new Town(String.valueOf(connectionDefinition.getDestinationTown()));
+
+            nodes.add(sourceTown);
+            nodes.add(destinationTown);
 
             final Edge townsConnection = new RailConnection(sourceTown, destinationTown);
 
@@ -46,7 +50,7 @@ public class RailroadBuilderImpl implements RailroadBuilder {
             sourceTownAdjacents.add(destinationTown);
             adjacents.put(sourceTown, sourceTownAdjacents);
         }
-        return new Railroad(distances, adjacents);
+        return new Railroad(distances, adjacents, nodes);
     }
 
 }

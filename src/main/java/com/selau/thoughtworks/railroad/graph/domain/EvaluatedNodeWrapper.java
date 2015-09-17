@@ -2,7 +2,10 @@ package com.selau.thoughtworks.railroad.graph.domain;
 
 /**
  * A simple wrapper to add distance information to a {@link Node} object.
- * Note that the attribute distance is not used in the 'equals' method, only in the 'compareTo' method.
+ *
+ * NOTE that the attribute distance is not used in the 'equals' and in
+ * the 'hashCode' methods, only in the 'compareTo' method.
+ *
  * @author selau
  *
  */

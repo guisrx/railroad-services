@@ -11,6 +11,7 @@ import com.selau.thoughtworks.railroad.domain.Town;
 import com.selau.thoughtworks.railroad.graph.DijkstraCalculator;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
 import com.selau.thoughtworks.railroad.graph.impl.DijkstraCalculatorImpl;
+import com.selau.thoughtworks.railroad.graph.mockprovider.RailroadInstanceProvider;
 
 /**
  * Unit tests of the class {@link DijkstraCalculatorImpl}.

@@ -1,11 +1,15 @@
 package com.selau.thoughtworks.railroad.graph.domain;
 
-import java.util.List;
 import java.util.Set;
 
+/**
+ * Interface that defines a weighted directed graph object.
+ * @author selau
+ *
+ */
 public interface Graph {
 
-    List<Node> nodes();
+    Set<Node> nodes();
 
     Set<Node> neighbors(Node node);
 

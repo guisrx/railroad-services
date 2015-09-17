@@ -1,7 +1,5 @@
 package com.selau.thoughtworks.railroad.domain;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -13,26 +11,32 @@ public class Railroad implements Graph {
 
     private final Map<Edge, Integer> distances;
     private final Map<Node, Set<Node>> adjacents;
+    private final Set<Node> nodes;
 
-    public Railroad(final Map<Edge, Integer> distances, final Map<Node, Set<Node>> adjacents) {
+    public Railroad(
+            final Map<Edge, Integer> distances,
+            final Map<Node, Set<Node>> adjacents,
+            final Set<Node> nodes) {
+
         this.distances = distances;
         this.adjacents = adjacents;
+        this.nodes = nodes;
     }
 
     @Override
-    public List<Node> nodes() {
-        return new ArrayList<Node>(adjacents.keySet());
+    public Set<Node> nodes() {
+        return this.nodes;
     }
 
     @Override
     public Set<Node> neighbors(Node node) {
-        return adjacents.get(node);
+        return this.adjacents.get(node);
     }
 
     @Override
     public Integer distance(Node source, Node target) {
         final Edge edge = new RailConnection(source, target);
-        return distances.get(edge);
+        return this.distances.get(edge);
     }
 
     @Override
@@ -45,7 +49,7 @@ public class Railroad implements Graph {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj)
             return true;
         if (obj == null)

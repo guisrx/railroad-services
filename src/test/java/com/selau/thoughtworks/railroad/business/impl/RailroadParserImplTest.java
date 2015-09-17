@@ -9,7 +9,7 @@ import org.junit.Test;
 import com.selau.thoughtworks.railroad.business.RailroadParser;
 import com.selau.thoughtworks.railroad.business.impl.RailroadParserImpl;
 import com.selau.thoughtworks.railroad.domain.RailConnectionDefinition;
-import com.selau.thoughtworks.railroad.graph.impl.RailroadInstanceProvider;
+import com.selau.thoughtworks.railroad.graph.mockprovider.RailroadInstanceProvider;
 
 /**
  * Unit tests of the class {@link RailroadParserImpl}.

@@ -9,6 +9,7 @@ import com.selau.thoughtworks.railroad.domain.Town;
 import com.selau.thoughtworks.railroad.graph.DeepFirstTraversal;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
 import com.selau.thoughtworks.railroad.graph.impl.DeepFirstTraversalImpl;
+import com.selau.thoughtworks.railroad.graph.mockprovider.RailroadInstanceProvider;
 
 /**
  * Unit test class of {@link DeepFirstTraversalImpl}.

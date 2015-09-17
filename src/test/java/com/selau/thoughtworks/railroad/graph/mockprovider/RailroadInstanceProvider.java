@@ -1,4 +1,4 @@
-package com.selau.thoughtworks.railroad.graph.impl;
+package com.selau.thoughtworks.railroad.graph.mockprovider;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -95,7 +95,15 @@ public class RailroadInstanceProvider {
 
         distances.put(new RailConnection(nodeE, nodeB), Integer.valueOf(3));
 
-        final Railroad railroad = new Railroad(distances, adjacents);
+        final Set<Node> nodes = new HashSet<Node>();
+
+        nodes.add(nodeA);
+        nodes.add(nodeB);
+        nodes.add(nodeC);
+        nodes.add(nodeD);
+        nodes.add(nodeE);
+
+        final Railroad railroad = new Railroad(distances, adjacents, nodes);
 
         return railroad;
     }

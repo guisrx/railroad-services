@@ -11,7 +11,7 @@ import com.selau.thoughtworks.railroad.business.RailroadBuilder;
 import com.selau.thoughtworks.railroad.business.impl.RailroadBuilderImpl;
 import com.selau.thoughtworks.railroad.domain.RailConnectionDefinition;
 import com.selau.thoughtworks.railroad.domain.Railroad;
-import com.selau.thoughtworks.railroad.graph.impl.RailroadInstanceProvider;
+import com.selau.thoughtworks.railroad.graph.mockprovider.RailroadInstanceProvider;
 
 /**
  * Unit tests of the class {@link RailroadBuilderImpl}.

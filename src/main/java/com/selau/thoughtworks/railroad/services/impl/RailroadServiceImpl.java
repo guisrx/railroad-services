@@ -1,5 +1,8 @@
 package com.selau.thoughtworks.railroad.services.impl;
 
+import static com.selau.thoughtworks.railroad.graph.DijkstraCalculator.INFINITE_DISTANCE;
+import static com.selau.thoughtworks.railroad.graph.DijkstraCalculator.NO_DISTANCE;
+
 import java.util.Map;
 
 import com.selau.thoughtworks.railroad.domain.Railroad;
@@ -7,6 +10,7 @@ import com.selau.thoughtworks.railroad.domain.Town;
 import com.selau.thoughtworks.railroad.graph.DeepFirstTraversal;
 import com.selau.thoughtworks.railroad.graph.DijkstraCalculator;
 import com.selau.thoughtworks.railroad.graph.PathDistanceCalculator;
+import com.selau.thoughtworks.railroad.graph.domain.InvalidPath;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
 import com.selau.thoughtworks.railroad.services.RailroadService;
 
@@ -39,10 +43,13 @@ public class RailroadServiceImpl implements RailroadService {
 
     @Override
     public int calculateShortestRouteDistance(final Railroad railroad, final Town from, final Town to) {
-
         final Map<Node, Integer> shortestRoutesDistances = this.dijkstraCalculator.calculate(railroad, from);
+        final Integer shortestDistance = shortestRoutesDistances.get(to);
 
-        return shortestRoutesDistances.get(to);
+        if (shortestDistance.equals(INFINITE_DISTANCE) || shortestDistance.equals(NO_DISTANCE))
+            throw new InvalidPath("There is not path from: " + from + " to: " + to);
+
+        return shortestDistance;
     }
 
     @Override
