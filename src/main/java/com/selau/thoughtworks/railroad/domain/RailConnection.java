@@ -3,6 +3,11 @@ package com.selau.thoughtworks.railroad.domain;
 import com.selau.thoughtworks.railroad.graph.domain.Edge;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
 
+/**
+ * Entity that represents an edge of a graph, a directed connection between two node.
+ * @author selau
+ *
+ */
 public class RailConnection implements Edge {
 
     private final Node from;

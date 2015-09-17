@@ -2,8 +2,8 @@ package com.selau.thoughtworks.railroad.graph.impl;
 
 import com.selau.thoughtworks.railroad.graph.PathDistanceCalculator;
 import com.selau.thoughtworks.railroad.graph.domain.Graph;
-import com.selau.thoughtworks.railroad.graph.domain.InvalidPath;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
+import com.selau.thoughtworks.railroad.graph.domain.exceptions.InvalidPath;
 
 /**
  * Calculator of total distance of a given path.

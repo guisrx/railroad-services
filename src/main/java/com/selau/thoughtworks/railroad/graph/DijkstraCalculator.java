@@ -5,6 +5,11 @@ import java.util.Map;
 import com.selau.thoughtworks.railroad.graph.domain.Graph;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
 
+/**
+ * Interface of a Dijkstra algorithm.
+ * @author selau
+ *
+ */
 public interface DijkstraCalculator {
 
     static Integer INFINITE_DISTANCE = Integer.valueOf(Integer.MAX_VALUE);

@@ -7,6 +7,13 @@ import com.selau.thoughtworks.railroad.graph.domain.Edge;
 import com.selau.thoughtworks.railroad.graph.domain.Graph;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
 
+/**
+ * Entity that represents the graph of a railroad, where nodes are towns and directed edges are railroads between the
+ * cities. The weight of the edges represent the distance of the railroad between the two towns.
+ *
+ * @author selau
+ *
+ */
 public class Railroad implements Graph {
 
     private final Map<Edge, Integer> distances;
@@ -15,12 +22,12 @@ public class Railroad implements Graph {
 
     public Railroad(
             final Map<Edge, Integer> distances,
-            final Map<Node, Set<Node>> adjacents,
-            final Set<Node> nodes) {
+            final Map<Node, Set<Node>> adjacentTowns,
+            final Set<Node> towns) {
 
         this.distances = distances;
-        this.adjacents = adjacents;
-        this.nodes = nodes;
+        this.adjacents = adjacentTowns;
+        this.nodes = towns;
     }
 
     @Override

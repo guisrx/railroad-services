@@ -2,6 +2,11 @@ package com.selau.thoughtworks.railroad.domain;
 
 import com.selau.thoughtworks.railroad.graph.domain.Node;
 
+/**
+ * Entity that represents a town connected in the railroad, a node in the graph.
+ * @author selau
+ *
+ */
 public class Town implements Node {
 
     private final String name;

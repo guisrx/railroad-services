@@ -4,7 +4,7 @@ import com.selau.thoughtworks.railroad.graph.domain.Graph;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
 
 /**
- * Interface of the deep first traversal computation methods.
+ * Interface of a deep first traversal computation methods.
  * @author selau
  *
  */

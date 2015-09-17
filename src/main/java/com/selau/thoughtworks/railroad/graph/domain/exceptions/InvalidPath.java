@@ -1,4 +1,4 @@
-package com.selau.thoughtworks.railroad.graph.domain;
+package com.selau.thoughtworks.railroad.graph.domain.exceptions;
 
 /**
  * Runtime exception to indicate an invalid path.

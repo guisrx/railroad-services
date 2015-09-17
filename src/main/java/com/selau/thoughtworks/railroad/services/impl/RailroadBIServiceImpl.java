@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.selau.thoughtworks.railroad.domain.Railroad;
 import com.selau.thoughtworks.railroad.domain.Town;
-import com.selau.thoughtworks.railroad.graph.domain.InvalidPath;
+import com.selau.thoughtworks.railroad.graph.domain.exceptions.InvalidPath;
 import com.selau.thoughtworks.railroad.services.RailroadBIService;
 import com.selau.thoughtworks.railroad.services.RailroadService;
 

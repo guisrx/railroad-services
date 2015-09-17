@@ -7,8 +7,8 @@ import org.junit.Test;
 import com.selau.thoughtworks.railroad.domain.Railroad;
 import com.selau.thoughtworks.railroad.domain.Town;
 import com.selau.thoughtworks.railroad.graph.PathDistanceCalculator;
-import com.selau.thoughtworks.railroad.graph.domain.InvalidPath;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
+import com.selau.thoughtworks.railroad.graph.domain.exceptions.InvalidPath;
 import com.selau.thoughtworks.railroad.graph.impl.PathDistanceCalculatorImpl;
 import com.selau.thoughtworks.railroad.graph.mockprovider.RailroadInstanceProvider;
 
