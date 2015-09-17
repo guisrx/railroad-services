@@ -2,7 +2,7 @@ package com.selau.thoughtworks.railroad.graph;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeSet;
+import java.util.PriorityQueue;
 
 import com.selau.thoughtworks.railroad.graph.domain.EvaluatedNodeWrapper;
 import com.selau.thoughtworks.railroad.graph.domain.Graph;
@@ -46,7 +46,7 @@ public class DijkstraCalculator {
 
         final Map<Node, Integer> shortestDistances = new HashMap<Node, Integer>();
         final Map<Node, EvaluatedNodeWrapper> evaluatedNodesMap = new HashMap<Node, EvaluatedNodeWrapper>();
-        final TreeSet<EvaluatedNodeWrapper> priorityQueue = new TreeSet<EvaluatedNodeWrapper>();
+        final PriorityQueue<EvaluatedNodeWrapper> priorityQueue = new PriorityQueue<EvaluatedNodeWrapper>();
 
         shortestDistances.put(source, NO_DISTANCE);
 
@@ -67,7 +67,10 @@ public class DijkstraCalculator {
 
         while (! priorityQueue.isEmpty()) {
 
-            final EvaluatedNodeWrapper leastDistanceNode = priorityQueue.pollFirst();
+            final EvaluatedNodeWrapper leastDistanceNode = priorityQueue.poll();
+
+            if (leastDistanceNode.distance() == INFINITE_DISTANCE)
+                break;
 
             for (final Node neighbor : graph.neighbors(leastDistanceNode.node())) {
 
@@ -82,8 +85,9 @@ public class DijkstraCalculator {
                     final EvaluatedNodeWrapper newNeighborEvaluation = new EvaluatedNodeWrapper(neighbor, newNeighborDistance);
                     evaluatedNodesMap.put(neighbor, newNeighborEvaluation);
 
-                    priorityQueue.remove(evaluatedNeighborNode);
-                    priorityQueue.add(newNeighborEvaluation);
+                    final boolean neighborRemoved = priorityQueue.remove(evaluatedNeighborNode);
+                    if (neighborRemoved)
+                        priorityQueue.add(newNeighborEvaluation);
 
                     shortestDistances.put(neighbor, Integer.valueOf(newNeighborDistance));
                 }
