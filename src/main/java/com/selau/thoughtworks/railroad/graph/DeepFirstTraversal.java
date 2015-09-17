@@ -41,10 +41,10 @@ public class DeepFirstTraversal {
 
         int countAccumulator = 0;
 
-        if ((maxSteps == currentStep) && (source == target))
+        if ((maxSteps == currentStep) && (source.equals(target)))
             return 1;
 
-        if ((maxSteps == currentStep) && (source != target))
+        if ((maxSteps == currentStep) && (! source.equals(target)))
             return 0;
 
         final Set<Node> neighbors = graph.neighbors(source);
@@ -79,7 +79,7 @@ public class DeepFirstTraversal {
         if (currentDistance >= maxDistance)
             return 0;
 
-        if ((currentDistance > 0) && (currentDistance < maxDistance) && (source == target))
+        if ((currentDistance > 0) && (currentDistance < maxDistance) && (source.equals(target)))
             countAccumulator++;
 
         for (final Node neighbor : graph.neighbors(source)) {
