@@ -15,8 +15,8 @@ import com.selau.thoughtworks.railroad.domain.Railroad;
 import com.selau.thoughtworks.railroad.graph.DeepFirstTraversal;
 import com.selau.thoughtworks.railroad.graph.DijkstraCalculator;
 import com.selau.thoughtworks.railroad.graph.PathDistanceCalculator;
-import com.selau.thoughtworks.railroad.graph.impl.DeepFirstTraversalImpl;
 import com.selau.thoughtworks.railroad.graph.impl.DijkstraCalculatorImpl;
+import com.selau.thoughtworks.railroad.graph.impl.IterativeDeepFirstTraversalImpl;
 import com.selau.thoughtworks.railroad.graph.impl.PathDistanceCalculatorImpl;
 import com.selau.thoughtworks.railroad.services.RailroadBIService;
 import com.selau.thoughtworks.railroad.services.RailroadService;
@@ -61,7 +61,7 @@ public class Main {
     }
 
     private RailroadBIService buildRailroadBIService() {
-        final DeepFirstTraversal deepFirstTraversal = new DeepFirstTraversalImpl();
+        final DeepFirstTraversal deepFirstTraversal = new IterativeDeepFirstTraversalImpl();
         final DijkstraCalculator dijkstraCalculator = new DijkstraCalculatorImpl();
         final PathDistanceCalculator pathDistanceCalculator = new PathDistanceCalculatorImpl();
 

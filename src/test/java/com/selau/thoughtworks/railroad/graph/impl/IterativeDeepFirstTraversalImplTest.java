@@ -11,11 +11,12 @@ import com.selau.thoughtworks.railroad.graph.domain.Node;
 import com.selau.thoughtworks.railroad.graph.mockprovider.RailroadInstanceProvider;
 
 /**
- * Unit test class of {@link DeepFirstTraversalImpl}.
+ * Unit test class of the {@link IterativeDeepFirstTraversalImpl}.
  * @author selau
  *
  */
-public class DeepFirstTraversalImplTest {
+public class IterativeDeepFirstTraversalImplTest {
+
 
     @Test
     public void shouldCountTotalPathsThroughEachStep() {
@@ -28,7 +29,7 @@ public class DeepFirstTraversalImplTest {
 
         final RailroadInstanceProvider provider = new RailroadInstanceProvider();
         final Railroad railroad = provider.buildTestRailRoad(nodeA, nodeB, nodeC, nodeD, nodeE);
-        final DeepFirstTraversal subject = new DeepFirstTraversalImpl();
+        final DeepFirstTraversal subject = new IterativeDeepFirstTraversalImpl();
 
         // when then
         assertEquals(2, subject.countTotalPathsThroughEachStep(railroad, nodeC, nodeC, 3));
@@ -47,7 +48,7 @@ public class DeepFirstTraversalImplTest {
 
         final RailroadInstanceProvider provider = new RailroadInstanceProvider();
         final Railroad railroad = provider.buildTestRailRoad(nodeA, nodeB, nodeC, nodeD, nodeE);
-        final DeepFirstTraversal subject = new DeepFirstTraversalImpl();
+        final DeepFirstTraversal subject = new IterativeDeepFirstTraversalImpl();
 
         // when then
         assertEquals(3, subject.countTotalPathsInTheLastStep(railroad, nodeA, nodeC, 4));
@@ -65,11 +66,12 @@ public class DeepFirstTraversalImplTest {
 
         final RailroadInstanceProvider provider = new RailroadInstanceProvider();
         final Railroad railroad = provider.buildTestRailRoad(nodeA, nodeB, nodeC, nodeD, nodeE);
-        final DeepFirstTraversal subject = new DeepFirstTraversalImpl();
+        final DeepFirstTraversal subject = new IterativeDeepFirstTraversalImpl();
 
         // when then
         assertEquals(7, subject.countTotalPathsWithLessThanMaxDistance(railroad, nodeC, nodeC, 30));
         assertEquals(7, subject.countTotalPathsWithLessThanMaxDistance(railroad, nodeB, nodeE, 30));
         assertEquals(3, subject.countTotalPathsWithLessThanMaxDistance(railroad, nodeB, nodeD, 30));
     }
+
 }

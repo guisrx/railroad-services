@@ -29,20 +29,20 @@ The purpose of this problem is to help the railroad provide its customers with i
 This project was built using Maven to manage dependencies, package, test and build the solution.
 
 * To test the application, on the root folder of the project execute: **mvn test**
-* To generate a jar file of the solution: **mvn package**
-* To run the application, after the package generation: **java -jar target/railroad-services-1.0.jar _<path to the input file>_**
+* To generate a jar file of the solution, on the root folder of the project execute: **mvn package**
+* To run the application, after the package generation, on the root folder of the project execute: **java -jar target/railroad-services-1.0.jar _<path to the input file>_**
 
 ### Design ###
 
-Using inversion of control principles, I tried to design stateless classes to execute operations over immutable data objects.
+Using inversion of control and dependency injection principles, I tried to design stateless objects to execute operations over immutable data objects.
 
-To calculate the three main classes of problems of this solutions I used:
+To calculate the three main classes of problems of this solution I used:
 
 * Distance along a certain route: a simple graph path walking algorithm accumulating the distance walked.
-* Number of different routes between two towns: a recursive deep first traversal algorithm with different stop conditions (this should be improved with a iterative deep first traversal algorithm).
+* Number of different routes between two towns: a iterative deep first traversal algorithm with different stop conditions accordingly with the question.
 * Shortest route between two towns: Dijkstra's algorithm implementation using a priority queue.
 
-To store the railroad graph I created an object *Railroad* with a map of the distances between the nodes (*Map<Edge, Integer>*) and map with the adjacents of each node (*Map<Node, Set<Node>>*).
+To store the railroad graph I created an object *Railroad* with a map of the distances between the nodes (*Map<Edge, Integer>*), a map with a set of the adjacents of each node (*Map<Node, Set<Node>>*) and a set of the nodes (*Set<Node>*).
 
 ### Dependencies ###
 
@@ -51,3 +51,4 @@ To store the railroad graph I created an object *Railroad* with a map of the dis
 * Maven version 2.2
 * Maven Compiler Plugin version 3.3
 * Maven Jar Plugin version 2.6
+
