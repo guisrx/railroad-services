@@ -28,9 +28,16 @@ Output: For test input 1 through 5, if no such route exists, output 'NO SUCH ROU
 
 This project was built using Maven to manage dependencies, package, test and build the solution.
 
-**
-* To test the application, on the root folder of the project execute: *mvn test*
-* To generate a jar file of the solution: *mvn package*
-* To run the applicatio, after the package generation: *java -jar target/railroad-services-1.0.jar <path to the input file>*
+* To test the application, on the root folder of the project execute: **mvn test**
+* To generate a jar file of the solution: **mvn package**
+* To run the application, after the package generation: **java -jar target/railroad-services-1.0.jar <path to the input file>**
 
 ### Design ###
+
+Using inversion of control principles, I tried to design stateless classes to execute operations over immutable data objects.
+
+To calculate the three main classes of problems of this solutions I used:
+
+* Distance along a certain route: a simple graph path walking algorithm accumulating the distance walked.
+* Number of different routes between two towns: a recursive deep first traversal algorithm with different stop conditions (this should be improved with a iterative deep first traversal algorithm).
+* Shortest route between two towns: Dijkstra's algorithm implementation using a priority queue.
