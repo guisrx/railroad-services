@@ -1,4 +1,4 @@
-package com.selau.thoughtworks.railroad.services;
+package com.selau.thoughtworks.railroad.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.List;
 import com.selau.thoughtworks.railroad.domain.Railroad;
 import com.selau.thoughtworks.railroad.domain.Town;
 import com.selau.thoughtworks.railroad.graph.domain.InvalidPath;
+import com.selau.thoughtworks.railroad.services.RailroadBIService;
+import com.selau.thoughtworks.railroad.services.RailroadService;
 
 /**
  * Business intelligence service of a railroad. Designed to answer some predefined questions.
@@ -13,7 +15,7 @@ import com.selau.thoughtworks.railroad.graph.domain.InvalidPath;
  * @author selau
  *
  */
-public class RailroadBusinessIntelligenceService {
+public class RailroadBIServiceImpl implements RailroadBIService {
 
     private static final String NO_SUCH_ROUTE = "NO SUCH ROUTE";
 
@@ -26,10 +28,11 @@ public class RailroadBusinessIntelligenceService {
 
     private final RailroadService railroadService;
 
-    public RailroadBusinessIntelligenceService(RailroadService railroadService) {
+    public RailroadBIServiceImpl(RailroadService railroadService) {
         this.railroadService = railroadService;
     }
 
+    @Override
     public List<String> buildAnswers(final Railroad railroad) {
         final List<String> answers = new ArrayList<String>();
 

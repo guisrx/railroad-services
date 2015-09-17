@@ -1,72 +1,18 @@
 package com.selau.thoughtworks.railroad.services;
 
-import java.util.Map;
-
 import com.selau.thoughtworks.railroad.domain.Railroad;
 import com.selau.thoughtworks.railroad.domain.Town;
-import com.selau.thoughtworks.railroad.graph.DeepFirstTraversal;
-import com.selau.thoughtworks.railroad.graph.DijkstraCalculator;
-import com.selau.thoughtworks.railroad.graph.PathDistanceCalculator;
-import com.selau.thoughtworks.railroad.graph.domain.Node;
 
-/**
- * Services available to be calculated for a {@link Railroad}.
- * @author selau
- *
- */
-public class RailroadService {
+public interface RailroadService {
 
-    private final DeepFirstTraversal deepFirstTraversal;
-    private final DijkstraCalculator dijkstraCalculator;
-    private final PathDistanceCalculator pathDistanceCalculator;
+    int calculatePathDistance(Railroad railroad, Town... path);
 
-    public RailroadService(
-            DeepFirstTraversal deepFirstTraversal,
-            DijkstraCalculator dijkstraCalculator,
-            PathDistanceCalculator pathDistanceCalculator) {
+    int calculateShortestRouteDistance(Railroad railroad, Town from, Town to);
 
-        this.deepFirstTraversal = deepFirstTraversal;
-        this.dijkstraCalculator = dijkstraCalculator;
-        this.pathDistanceCalculator = pathDistanceCalculator;
-    }
+    int countTotalPathsThroughEachStep(Railroad railroad, Town from, Town to, int maxStops);
 
-    public int calculatePathDistance(final Railroad railroad, final Town ... path) {
+    int countTotalPathsInTheLastStep(Railroad railroad, Town from, Town to, int maxStops);
 
-        return this.pathDistanceCalculator.calculate(railroad, path);
-    }
-
-    public int calculateShortestRouteDistance(final Railroad railroad, final Town from, final Town to) {
-
-        final Map<Node, Integer> shortestRoutesDistances = this.dijkstraCalculator.calculate(railroad, from);
-
-        return shortestRoutesDistances.get(to);
-    }
-
-    public int countTotalPathsThroughEachStep(
-            final Railroad railroad,
-            final Town from,
-            final Town to,
-            final int maxStops) {
-
-        return this.deepFirstTraversal.countTotalPathsThroughEachStep(railroad, from, to, maxStops);
-    }
-
-    public int countTotalPathsInTheLastStep(
-            final Railroad railroad,
-            final Town from,
-            final Town to,
-            final int maxStops) {
-
-        return this.deepFirstTraversal.countTotalPathsInTheLastStep(railroad, from, to, maxStops);
-    }
-
-    public int countTotalPathsWithLessThanMaxDistance(
-            final Railroad railroad,
-            final Town from,
-            final Town to,
-            final int maxDistance) {
-
-        return this.deepFirstTraversal.countTotalPathsWithLessThanMaxDistance(railroad, from, to, maxDistance);
-    }
+    int countTotalPathsWithLessThanMaxDistance(Railroad railroad, Town from, Town to, int maxDistance);
 
 }

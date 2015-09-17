@@ -8,13 +8,20 @@ import java.util.Set;
 
 import com.selau.thoughtworks.railroad.business.RailroadBuilder;
 import com.selau.thoughtworks.railroad.business.RailroadParser;
+import com.selau.thoughtworks.railroad.business.impl.RailroadBuilderImpl;
+import com.selau.thoughtworks.railroad.business.impl.RailroadParserImpl;
 import com.selau.thoughtworks.railroad.domain.RailConnectionDefinition;
 import com.selau.thoughtworks.railroad.domain.Railroad;
 import com.selau.thoughtworks.railroad.graph.DeepFirstTraversal;
 import com.selau.thoughtworks.railroad.graph.DijkstraCalculator;
 import com.selau.thoughtworks.railroad.graph.PathDistanceCalculator;
-import com.selau.thoughtworks.railroad.services.RailroadBusinessIntelligenceService;
+import com.selau.thoughtworks.railroad.graph.impl.DeepFirstTraversalImpl;
+import com.selau.thoughtworks.railroad.graph.impl.DijkstraCalculatorImpl;
+import com.selau.thoughtworks.railroad.graph.impl.PathDistanceCalculatorImpl;
+import com.selau.thoughtworks.railroad.services.RailroadBIService;
 import com.selau.thoughtworks.railroad.services.RailroadService;
+import com.selau.thoughtworks.railroad.services.impl.RailroadBIServiceImpl;
+import com.selau.thoughtworks.railroad.services.impl.RailroadServiceImpl;
 
 
 /**
@@ -40,30 +47,30 @@ public class Main {
         final String graphDefinition = inputScanner.nextLine();
         inputScanner.close();
 
-        final RailroadParser railroadParser = new RailroadParser();
+        final RailroadParser railroadParser = new RailroadParserImpl();
         final Set<RailConnectionDefinition> railConnectionDefinitions = railroadParser.parse(graphDefinition);
 
-        final RailroadBuilder railroadBuilder = new RailroadBuilder();
+        final RailroadBuilder railroadBuilder = new RailroadBuilderImpl();
         final Railroad railroad = railroadBuilder.build(railConnectionDefinitions);
 
-        final RailroadBusinessIntelligenceService railroadBIService = buildRailroadBIService();
+        final RailroadBIService railroadBIService = buildRailroadBIService();
 
         final List<String> answers = railroadBIService.buildAnswers(railroad);
 
         return answers;
     }
 
-    private RailroadBusinessIntelligenceService buildRailroadBIService() {
-        final DeepFirstTraversal deepFirstTraversal = new DeepFirstTraversal();
-        final DijkstraCalculator dijkstraCalculator = new DijkstraCalculator();
-        final PathDistanceCalculator pathDistanceCalculator = new PathDistanceCalculator();
+    private RailroadBIService buildRailroadBIService() {
+        final DeepFirstTraversal deepFirstTraversal = new DeepFirstTraversalImpl();
+        final DijkstraCalculator dijkstraCalculator = new DijkstraCalculatorImpl();
+        final PathDistanceCalculator pathDistanceCalculator = new PathDistanceCalculatorImpl();
 
-        final RailroadService railroadService = new RailroadService(
+        final RailroadService railroadService = new RailroadServiceImpl(
                 deepFirstTraversal,
                 dijkstraCalculator,
                 pathDistanceCalculator);
 
-        return new RailroadBusinessIntelligenceService(railroadService);
+        return new RailroadBIServiceImpl(railroadService);
     }
 
     private Scanner buildInputScanner(final String args[]) {

@@ -1,4 +1,4 @@
-package com.selau.thoughtworks.railroad.graph;
+package com.selau.thoughtworks.railroad.graph.impl;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,14 +6,16 @@ import org.junit.Test;
 
 import com.selau.thoughtworks.railroad.domain.Railroad;
 import com.selau.thoughtworks.railroad.domain.Town;
+import com.selau.thoughtworks.railroad.graph.DeepFirstTraversal;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
+import com.selau.thoughtworks.railroad.graph.impl.DeepFirstTraversalImpl;
 
 /**
- * Unit test class of {@link DeepFirstTraversal}.
+ * Unit test class of {@link DeepFirstTraversalImpl}.
  * @author selau
  *
  */
-public class DeepFirstTraversalTests {
+public class DeepFirstTraversalImplTest {
 
     @Test
     public void shouldCountTotalPathsThroughEachStep() {
@@ -26,7 +28,7 @@ public class DeepFirstTraversalTests {
 
         final RailroadInstanceProvider provider = new RailroadInstanceProvider();
         final Railroad railroad = provider.buildTestRailRoad(nodeA, nodeB, nodeC, nodeD, nodeE);
-        final DeepFirstTraversal subject = new DeepFirstTraversal();
+        final DeepFirstTraversal subject = new DeepFirstTraversalImpl();
 
         // when then
         assertEquals(2, subject.countTotalPathsThroughEachStep(railroad, nodeC, nodeC, 3));
@@ -45,7 +47,7 @@ public class DeepFirstTraversalTests {
 
         final RailroadInstanceProvider provider = new RailroadInstanceProvider();
         final Railroad railroad = provider.buildTestRailRoad(nodeA, nodeB, nodeC, nodeD, nodeE);
-        final DeepFirstTraversal subject = new DeepFirstTraversal();
+        final DeepFirstTraversal subject = new DeepFirstTraversalImpl();
 
         // when then
         assertEquals(3, subject.countTotalPathsInTheLastStep(railroad, nodeA, nodeC, 4));
@@ -63,7 +65,7 @@ public class DeepFirstTraversalTests {
 
         final RailroadInstanceProvider provider = new RailroadInstanceProvider();
         final Railroad railroad = provider.buildTestRailRoad(nodeA, nodeB, nodeC, nodeD, nodeE);
-        final DeepFirstTraversal subject = new DeepFirstTraversal();
+        final DeepFirstTraversal subject = new DeepFirstTraversalImpl();
 
         // when then
         assertEquals(7, subject.countTotalPathsWithLessThanMaxDistance(railroad, nodeC, nodeC, 30));

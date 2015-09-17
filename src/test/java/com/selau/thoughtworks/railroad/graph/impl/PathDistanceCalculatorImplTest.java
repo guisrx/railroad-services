@@ -1,4 +1,4 @@
-package com.selau.thoughtworks.railroad.graph;
+package com.selau.thoughtworks.railroad.graph.impl;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,15 +6,17 @@ import org.junit.Test;
 
 import com.selau.thoughtworks.railroad.domain.Railroad;
 import com.selau.thoughtworks.railroad.domain.Town;
+import com.selau.thoughtworks.railroad.graph.PathDistanceCalculator;
 import com.selau.thoughtworks.railroad.graph.domain.InvalidPath;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
+import com.selau.thoughtworks.railroad.graph.impl.PathDistanceCalculatorImpl;
 
 /**
- * Unit test class of the {@link PathDistanceCalculator}.
+ * Unit test class of the {@link PathDistanceCalculatorImpl}.
  * @author selau
  *
  */
-public class PathDistanceCalculatorTests {
+public class PathDistanceCalculatorImplTest {
 
     @Test
     public void shouldCalculateRouteCosts() {
@@ -27,7 +29,7 @@ public class PathDistanceCalculatorTests {
 
         final RailroadInstanceProvider provider = new RailroadInstanceProvider();
         final Railroad railroad = provider.buildTestRailRoad(nodeA, nodeB, nodeC, nodeD, nodeE);
-        final PathDistanceCalculator subject = new PathDistanceCalculator();
+        final PathDistanceCalculator subject = new PathDistanceCalculatorImpl();
 
         // when then
         assertEquals(9, subject.calculate(railroad, nodeA, nodeB, nodeC));
@@ -47,7 +49,7 @@ public class PathDistanceCalculatorTests {
 
         final RailroadInstanceProvider provider = new RailroadInstanceProvider();
         final Railroad railroad = provider.buildTestRailRoad(nodeA, nodeB, nodeC, nodeD, nodeE);
-        final PathDistanceCalculator subject = new PathDistanceCalculator();
+        final PathDistanceCalculator subject = new PathDistanceCalculatorImpl();
 
         // when then
         subject.calculate(railroad, nodeA, nodeE, nodeD);

@@ -1,4 +1,4 @@
-package com.selau.thoughtworks.railroad.graph;
+package com.selau.thoughtworks.railroad.graph.impl;
 
 import java.util.HashMap;
 import java.util.HashSet;

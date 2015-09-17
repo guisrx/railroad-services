@@ -1,4 +1,4 @@
-package com.selau.thoughtworks.railroad.graph;
+package com.selau.thoughtworks.railroad.graph.impl;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,14 +8,16 @@ import org.junit.Test;
 
 import com.selau.thoughtworks.railroad.domain.Railroad;
 import com.selau.thoughtworks.railroad.domain.Town;
+import com.selau.thoughtworks.railroad.graph.DijkstraCalculator;
 import com.selau.thoughtworks.railroad.graph.domain.Node;
+import com.selau.thoughtworks.railroad.graph.impl.DijkstraCalculatorImpl;
 
 /**
- * Unit tests of the class {@link DijkstraCalculator}.
+ * Unit tests of the class {@link DijkstraCalculatorImpl}.
  * @author selau
  *
  */
-public class DijkstraCalculatorTests {
+public class DijkstraCalculatorImplTest {
 
     @Test
     public void shouldFindShortestRouteCosts() {
@@ -28,7 +30,7 @@ public class DijkstraCalculatorTests {
 
         final RailroadInstanceProvider provider = new RailroadInstanceProvider();
         final Railroad railroad = provider.buildTestRailRoad(nodeA, nodeB, nodeC, nodeD, nodeE);
-        final DijkstraCalculator subject = new DijkstraCalculator();
+        final DijkstraCalculator subject = new DijkstraCalculatorImpl();
 
         // when
         final Map<Node, Integer> shortestPathsCosts = subject.calculate(railroad, nodeA);
@@ -52,7 +54,7 @@ public class DijkstraCalculatorTests {
 
         final RailroadInstanceProvider provider = new RailroadInstanceProvider();
         final Railroad railroad = provider.buildTestRailRoad(nodeA, nodeB, nodeC, nodeD, nodeE);
-        final DijkstraCalculator subject = new DijkstraCalculator();
+        final DijkstraCalculator subject = new DijkstraCalculatorImpl();
 
         // when
         final Map<Node, Integer> shortestPathsCosts = subject.calculate(railroad, nodeA);
@@ -75,7 +77,7 @@ public class DijkstraCalculatorTests {
 
         final RailroadInstanceProvider provider = new RailroadInstanceProvider();
         final Railroad railroad = provider.buildTestRailRoad(nodeA, nodeB, nodeC, nodeD, nodeE);
-        final DijkstraCalculator subject = new DijkstraCalculator();
+        final DijkstraCalculator subject = new DijkstraCalculatorImpl();
 
         // when
         final Map<Node, Integer> shortestPathsCosts = subject.calculate(railroad, nodeB);

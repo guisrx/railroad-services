@@ -16,7 +16,7 @@ import org.junit.Test;
  * @author selau
  *
  */
-public class MainIntegrationTests {
+public class MainIntegrationTest {
 
     @Test
     public void shouldProcessRailBIReportCorrectly() throws FileNotFoundException {
